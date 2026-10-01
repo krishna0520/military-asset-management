@@ -13,6 +13,10 @@ logging.basicConfig(filename="api.log", level=logging.INFO, format="%(asctime)s 
 app = FastAPI(title="Military Asset Management System")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
+@app.get("/")
+def root():
+    return {"status": "ok", "service": "Military Asset Management API", "docs": "/docs"}
+
 ALL = ("admin", "base_commander", "logistics_officer")
 ADMIN_CMD = ("admin", "base_commander")
 
